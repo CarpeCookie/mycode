@@ -1,0 +1,14 @@
+export OS_AUTH_URL=https://www.google.com
+export OS_IDENTITY_API_VERSION=3
+export OS_PROJECT_NAME=a
+export OS_PROJECT_DOMAIN_NAME=a
+export OS_USERNAME=a
+export OS_USER_DOMAIN_NAME=a
+export OS_PASSWORD=a
+export OS_AUTH_URL=http://controller:35357/v2/
+export OS_IDENTITY_API_VERSION=3
+export OS_PROJECT_NAME=myproject
+export OS_PROJECT_DOMAIN_NAME=default
+export OS_USERNAME=admin
+export OS_USER_DOMAIN_NAME=default
+export OS_PASSWORD=alta3
