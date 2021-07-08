@@ -1,0 +1,22 @@
+---              
+- name: Create New User and Add to Group 
+  hosts: renamed, !taz
+  gather_facts: False
+  connection: ssh
+  #  new_user: input("username") 
+
+
+  tasks:
+  - name: Create a New Group
+    group:
+        name: funkytown
+        state: present
+
+  
+  tasks:
+  - name: Create new user   
+    user:
+        name: matthew
+        password: False
+        groups:
+        - funkytown 
