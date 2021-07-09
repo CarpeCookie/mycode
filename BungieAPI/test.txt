@@ -1,0 +1,891 @@
+
+
+<html>
+	<head>
+		<title>Bungie.net : Join the Bungie Community!</title>
+
+		<link href="/sharedstyle/site?v=mcm8OnbKBNdjoP__5-QY5ntxBfeC0kmauIJNmBVsUmA1" rel="stylesheet"/>
+
+		<link href="/sharedstyle/uikit?v=WzMASbXApZ8q9uKS1p9TAKndoZ-X32unLL5LlYPQuP81" rel="stylesheet"/>
+
+
+		<script src="/sharedbundle/baselibraries?v=Wp7IYl4SUsWPssIQ4D2NeSw2Zo3p4ThH6ITp_kz0GrU1"></script>
+
+
+		
+
+
+<script type="text/javascript">
+
+	var ServerVars = {
+		Environment: 'live',
+		Cst: {
+			enabled: true,
+			name: "bunglecst",
+			currentVersion: "6"
+		},
+		AnalyticsEnabled: true,
+		VerboseConsoleLogs: false,
+		ShowErrorsInPage: false,
+		DocumentReadyInteractionDelay: false,
+		SessionContextCookieName: 'bungled',
+		WebMembershipCookieName: 'bungleme',
+		StaticHostEnabled: 'false' === 'true',
+		StaticHost: 'www.bungie.net',
+		ContentVersion: 'cv=3983621215&av=2659687936',
+		GetCountsInterval: 300000,
+		GetCountsEnabled: false,
+		MobileWebView: false,
+		MinimalLayout: false,
+		RealTimeHeartBeat: 90,
+		FeatureFlags: {
+			Is3dEnabled: true,
+			CanUse3d: true,
+			TwitchLink: true
+		},
+		BrowserSupportHelpArticleLink: "/en/Help/Article/46269#CompanionBNET",
+		PCMigrationEntitlements: "false"
+	};
+
+
+</script>
+		
+
+
+<script type="text/javascript">
+
+	var __localizer = __localizer || {};
+
+	__localizer.localeAndCountry = 'en-US';
+
+	var PageUrls = {
+
+		/* different urls */
+		aboutPage: "/en/AboutUs/Index#!page=index",
+		activityPage: "/en/Activity/Index",
+		careersPage: "https://careers.bungie.com/",
+		careers: "https://careers.bungie.com/",
+		careerDetails: "/en/About/Careers/Detail/%7Breplace%7D",
+		clansPage: "/en/ClanV2/Search",
+		clansSearch: "",
+		clanIndex: "/en/ClanV2/Index",
+		clanDetail: "/en/ClanV2/Index",
+		clanForum: "",
+		clanAllianceForum: "/en/Clan/AllianceForum",
+		clanPost: "/en/Clan",
+		clanAdmin: "/en/ClanV2/AdminSections",
+		clanSettings: "",
+		clanCreate: "/en/ClanV2/Search",
+		communityCreationsDetail: "/en/Community/Detail",
+		defaultPostPage: "/en/Forum/Post",
+		defaultTopicsPage: "/en/Forum/Topics",
+		followingTags: "/en/View/Profile/mytags",
+		followingUsers: "/en/View/Profile/usersfollowed",
+		followingGroups: "/en/View/Profile/mygroups",
+		followers: "/en/View/Profile/followers",
+		groupsPage: "/en/Groups/Index",
+		groupMembers: "/en/Groups/Members",
+		groupFollowers: "/en/Groups/Followers",
+		groupAdminPage: "/en/Groups/Admin",
+		groupTopicsPage: "/en/Groups/Forum",
+		groupPostPage: "/en/Groups/Post",
+		groupDetail: "/en/Groups/Chat",
+		groupMyGroups: "/en/Groups/myGroups",
+		homePage: "/",
+		newsArticle: "/en/News/News",
+		newsIndex: "/en/News/Index",
+		newsFeedByCategory: "/en/Rss/NewsByCategory",
+		newPostsPage: "/en/Forum/Post",
+		newTopicsPage: "/en/Forum/Topics",
+		profilePage: "/en/Profile",
+		profilePageTemplate: "/en/Profile/{membershipType}/{membershipId}",
+		redeemedCodes: "/7/en/Codes/History",
+		root: "http://www.bungie.net",
+		searchPage: "/en/Search",
+		settingsPage: "/en/Profile/Settings",
+		styleguidePage: "/en/AboutUs/Index#!page=styleguide",
+		termsOfUse: "/7/en/Legal/Terms",
+		userResearch: "/en/Questionnaire/UserResearch",
+
+		psnReauth: "/en/User/Reauth/Psnid",
+		xboxReauth: "/en/User/Reauth/Xuid",
+		applicationDetails: "/en/Application/Detail"
+	};
+
+	var HelperText = {
+		tags: 'Tags (ex: #funny #multiplayer)',
+		postTitle: 'Title',
+		postLink: 'Share a link url, image url, or youtube video',
+		postBody: 'Enter body text',
+		ignoreComments: 'Enter your comments',
+		groupName: 'Group Name',
+		groupDescription: 'Description',
+		messageBody: 'Write a message...',
+		displayName: 'Display Name',
+		email: 'Email Address',
+		groupSearch: 'Search Groups',
+		search: 'Search',
+		searchBungieNet: 'Search Bungie.net',
+		pollTopic: 'Post a Poll',
+		pollAnswer: 'Poll Answer',
+		questionTopic: 'Question Post'
+	};
+
+	var DestinyEquipFailureReasons = {
+		ItemUnequippable: "This item cannot be equipped.",
+		ItemUniqueEquipRestricted: "You cannot equip another item of this type.",
+		ItemFailedLevelCheck: "Level $$CharacterLevel$$ required.",
+		ItemNotOnCharacter: "This item must be in your character&#39;s inventory to equip it."
+	};
+
+	var DestinyVendorItemStatuses = {
+		NoInventorySpace: "No space in inventory",
+		NoFunds: "You can&#39;t afford this item",
+		NoProgression: "Your rank is too low",
+		OutsidePurchaseWindow: "You can&#39;t purchase this... yet",
+		NotAvailable: "The item is currently unavailable",
+		UniquenessViolation: "You can&#39;t have more than one of these",
+		UnknownError: "Unpurchasable"
+	};
+
+	var OfficialTags = [];
+
+			OfficialTags.push("Destiny2");
+			OfficialTags.push("Destiny");
+			OfficialTags.push("Clans");
+			OfficialTags.push("CompanionApp");
+			OfficialTags.push("Help");
+			OfficialTags.push("OffTopic");
+
+
+	var ImageUrls = {
+		defaultGroupBanner: '/img/theme/bungienet/placeholders/defaultGroup.png'
+	};
+	__localizer.Mute = {};
+
+__localizer.Mute[4] = "Disrespect/Hate Speech";__localizer.Mute[64] = "Harassment/Personal Attacks/Bullying";__localizer.Mute[8] = "Name and Shame/Privacy Violation";__localizer.Mute[1] = "Gory Violence/Explicit Sexuality";__localizer.Mute[256] = "Threats of Violence/Illegal Activity";__localizer.Mute[1024] = "Political/Religious Discussion";__localizer.Mute[32] = "Cheating/Hacking";__localizer.Mute[16] = "Spoilers/Distributing Stolen Content";__localizer.Mute[512] = "Soliciting/Plagiarism/Phishing/Impersonation";__localizer.Mute[128] = "Disruption/Evasion";
+	__localizer.BanLength = {
+		"None": "None",
+"Week": "Week",
+"TwoWeeks": "Two Weeks",
+"ThreeWeeks": "Three Weeks",
+"Month": "Month",
+"ThreeMonths": "Three Months",
+"SixMonths": "Six Months",
+"Year": "Year",
+"Forever": "Forever",
+"ThreeMinutes": "Three Minutes",
+"Hour": "An Hour",
+"ThirtyDays": "Thirty Days"
+
+	};
+	__localizer.CurrentCultureName = "en";
+	__localizer.CurrentBrowserCultureName = "";
+
+	if (__localizer.Time != null)
+	{
+		Localizer.Time.MonthAbbr = function(num)
+		{
+			if (num < 1 || num > 12)
+			{
+				return "";
+			}
+			return Localizer.Time["monthabbr" + num];
+		};
+	}
+
+	__localizer.Applications = {
+				"BnetMobile":
+			"Bungie.net Mobile"
+
+
+	};
+
+	IgnoreSettings = [];
+		IgnoreSettings.push(4);
+		IgnoreSettings.push(64);
+		IgnoreSettings.push(8);
+		IgnoreSettings.push(1);
+		IgnoreSettings.push(256);
+		IgnoreSettings.push(1024);
+		IgnoreSettings.push(32);
+		IgnoreSettings.push(16);
+		IgnoreSettings.push(512);
+		IgnoreSettings.push(128);
+
+
+	var TagMetadata = {
+
+			"ReleaseWidget": {
+			}
+				,
+		
+			"Ad": {
+			}
+				,
+		
+			"Asset": {
+			}
+				,
+		
+			"Audio": {
+			}
+				,
+		
+			"CalendarEvent": {
+			}
+				,
+		
+			"Callout": {
+			}
+				,
+		
+			"CharacterItem": {
+			}
+				,
+		
+			"ContentBlock": {
+				"": ""
+					,
+				"AboutUs": "about us page content"
+					,
+				"Careers": "careers page content"
+					,
+				"Feedback": "feedback"
+					,
+				"Foundation": "foundation content block"
+					,
+				"Halo": "halo universe page"
+					,
+				"HelpInstructions": "help-instructions"
+					,
+				"Marathon": "marathon universe page"
+					,
+				"Myth": "myth universe page"
+					,
+				"Publications": "publications page content"
+					,
+				"AboutDestiny": "about-destiny"
+			}
+				,
+		
+			"ContentSet": {
+				"": ""
+					,
+				"Ad300x250": "ad-300x250"
+					,
+				"Ad300x600": "ad-300x600"
+					,
+				"Ad728x90": "ad-728x90"
+					,
+				"FrontPage": "front-page-items"
+					,
+				"CurrentSales": "current-sales"
+					,
+				"DestinyProductFamilySet": "destiny-product-family-set"
+					,
+				"DestinyBuySet": "destiny-sku-group-set"
+					,
+				"ReleasesCategoriesContentSet": "releases-categories-content-set"
+					,
+				"ExploreDismissables": "explore-destiny-dismissables"
+					,
+				"Halo": "halo universe page"
+					,
+				"Marathon": "marathon universe page"
+					,
+				"Myth": "myth universe page"
+					,
+				"GlobalAlertSet": "global-alert-content-set"
+					,
+				"HelpTrending": "help-trending"
+					,
+				"ActiveJobs": "active-jobs-content-set"
+					,
+				"FoundationSidebar": "foundation right side images"
+					,
+				"LiveTiles": "live-tiles-ps4"
+					,
+				"ProductPage": "product-page-content-set"
+					,
+				"Publications": "publications-content-set"
+					,
+				"ScheduledBroadcastContentSet": "scheduled-broadcast-content-set"
+					,
+				"BungieStyleguide": "styleguide-bungie"
+					,
+				"DestinyStyleguide": "styleguide-destiny"
+			}
+				,
+		
+			"CountdownTimer": {
+			}
+				,
+		
+			"CustomHelpForm": {
+			}
+				,
+		
+			"DestinyAdvisor": {
+				"": ""
+					,
+				"milestone_clan_objectives": "milestone_clan_objectives"
+					,
+				"milestone_daily_pvp": "milestone_daily_pvp"
+					,
+				"milestone_daily_gambit": "milestone_daily_gambit"
+					,
+				"milestone_daily_strikes": "milestone_daily_strikes"
+					,
+				"milestone_raid_eater_of_worlds": "milestone_raid_eater_of_worlds"
+					,
+				"milestone_hotspot": "milestone_hotspot"
+					,
+				"milestone_heroic_adventures": "milestone_heroic_adventures"
+					,
+				"milestone_raid_gluttony": "milestone_raid_gluttony"
+					,
+				"milestone_raid_spire_of_stars": "milestone_raid_spire_of_stars"
+					,
+				"milestone_weekly_crucible": "milestone_weekly_crucible"
+					,
+				"milestone_weekly_gambit": "milestone_weekly_gambit"
+					,
+				"milestone_weekly_story": "milestone_weekly_story"
+					,
+				"milestone_nightfall": "milestone_nightfall"
+					,
+				"milestone_nightfall_high_score": "milestone_nightfall_high_score"
+					,
+				"milestone_weekly_strikes": "milestone_weekly_strikes"
+					,
+				"milestone_xur": "milestone_xur"
+			}
+				,
+		
+			"DestinyItem": {
+			}
+				,
+		
+			"DestinyProductFamily": {
+			}
+				,
+		
+			"DestinySkuItem": {
+				"": ""
+					,
+				"sku-forsaken": "sku-forsaken"
+					,
+				"sku-legendaryedition": "sku-legendaryedition"
+					,
+				"sku-freetoplay": "sku-freetoplay"
+					,
+				"sku-huntsilverbundle": "sku-huntsilverbundle"
+					,
+				"sku-silverbundle": "sku-silverbundle"
+					,
+				"sku-shadowkeepdigitaldeluxe": "sku-shadowkeepdigitaldeluxe"
+					,
+				"sku-shadowkeepstandard": "sku-shadowkeepstandard"
+					,
+				"sku-shadowkeepforsakenupgradeedition": "sku-shadowkeepforsakenupgradeedition"
+			}
+				,
+		
+			"DestinyVendor": {
+			}
+				,
+		
+			"DirectVideoPage": {
+			}
+				,
+		
+			"EventPage": {
+			}
+				,
+		
+			"GeneralArticle": {
+			}
+				,
+		
+			"GlobalAlert": {
+			}
+				,
+		
+			"GuidePage": {
+				"": ""
+					,
+				"guide-destiny2": "guide-destiny2"
+			}
+				,
+		
+			"Help": {
+				"": ""
+					,
+				"DestinyLegacyPlatformInaccessible": "destinylegacyplatforminaccessible"
+					,
+				"DestinyLegacyPlatformInUse": "destinylegacyplatforminuse"
+					,
+				"DestinyLegacyPlatformRestricted": "destinylegacyplatformrestricted"
+					,
+				"allplatforms": "allplatforms"
+					,
+				"Destiny2": "destiny2"
+					,
+				"DestinyLegacySupport": "destinylegacysupport"
+					,
+				"PS3": "ps3"
+					,
+				"XBox360": "xbox360"
+					,
+				"pc": "pc"
+					,
+				"PS4": "ps4"
+					,
+				"XBONE": "xbone"
+			}
+				,
+		
+			"HelpStep": {
+				"DestinyLegacyPlatformInaccessible": "destinylegacyplatforminaccessible"
+					,
+				"DestinyLegacyPlatformInUse": "destinylegacyplatforminuse"
+					,
+				"DestinyLegacyPlatformRestricted": "destinylegacyplatformrestricted"
+					,
+				"allplatforms": "allplatforms"
+					,
+				"Destiny2": "destiny2"
+					,
+				"DestinyLegacySupport": "destinylegacysupport"
+					,
+				"PS3": "ps3"
+					,
+				"XBox360": "xbox360"
+					,
+				"pc": "pc"
+					,
+				"PS4": "ps4"
+					,
+				"XBONE": "xbone"
+			}
+				,
+		
+			"CalendarRow": {
+			}
+				,
+		
+			"EventCalendar": {
+				"": ""
+					,
+				"calendar-events": "calendar-events"
+			}
+				,
+		
+			"ReleaseCalendar": {
+				"": ""
+					,
+				"calendar-releases": "calendar-releases"
+			}
+				,
+		
+			"ReleaseItem": {
+			}
+				,
+		
+			"ReleaseSet": {
+			}
+				,
+		
+			"HomepageCallToAction": {
+			}
+				,
+		
+			"InformationBlock": {
+				"": ""
+					,
+				"Faq": "bungie faq page 2"
+					,
+				"Trademarks": "bungie trademarks page 3"
+					,
+				"Conduct": "bungie conduct page"
+					,
+				"CookiePolicyPage": "bungie cookiepolicy page"
+					,
+				"EULA": "bungie eula page"
+					,
+				"MobileFaq": "bungie mobile faq"
+					,
+				"GameConduct": "game conduct page"
+					,
+				"Mobile": "mobile app page"
+					,
+				"PrivacyPage": "bungie privacy page 2"
+					,
+				"Publications": "publications intro"
+					,
+				"RedemptionCodeFaq": "destiny code faq"
+					,
+				"Terms": "bungie terms page"
+			}
+				,
+		
+			"Job": {
+			}
+				,
+		
+			"DestinyLandingItem": {
+				"": ""
+					,
+				"Guardians": "destiny-guardians"
+					,
+				"Landing": "destiny-landing"
+					,
+				"Media": "destiny-media"
+					,
+				"Enemies": "destiny-our-enemies"
+					,
+				"Story": "destiny-story"
+					,
+				"Frontier": "destiny-frontier"
+					,
+				"CharacterItemSet": "destiny-character-set-parent"
+			}
+				,
+		
+			"Link": {
+				"": ""
+					,
+				"DestinyPressRelease": "destiny-pressrelease"
+					,
+				"Featured": "news-featured"
+			}
+				,
+		
+			"LinkedImage": {
+			}
+				,
+		
+			"LiveTile": {
+				"": ""
+					,
+				"CombinedArms": "tile-combined-arms"
+					,
+				"IronBanner": "tile-iron-banner"
+					,
+				"QueensWrath": "tile-queens-wrath"
+					,
+				"Salvage": "tile-salvage"
+			}
+				,
+		
+			"MarketingContentBlock": {
+			}
+				,
+		
+			"MarketingMediaAsset": {
+			}
+				,
+		
+			"MarketingNewsAndMedia": {
+			}
+				,
+		
+			"MessageOfTheDay": {
+				"Android": "platform-android"
+					,
+				"iOS": "platform-ios"
+					,
+				"Web": "platform-web"
+					,
+				"WindowsPhone": "platform-windows"
+			}
+				,
+		
+			"News": {
+				"": ""
+					,
+				"Bungie": "news-bungie"
+					,
+				"Community": "news-community"
+					,
+				"Destiny": "news-destiny"
+					,
+				"Tech": "news-tech"
+					,
+				"Updates": "news-updates"
+					,
+				"BreakingIn": "news-breaking-in"
+					,
+				"BungiePodcast": "news-bungie-podcast"
+					,
+				"CommunityFocus": "news-community-focus"
+					,
+				"DrawingBoard": "news-drawing-board"
+					,
+				"Featured": "news-featured"
+					,
+				"MailSack": "news-mail-sack"
+					,
+				"TopStories": "news-top-stories"
+					,
+				"WeeklyUpdates": "news-weekly-update"
+			}
+				,
+		
+			"PlayerSpotlight": {
+			}
+				,
+		
+			"ProductDescription": {
+			}
+				,
+		
+			"PromoWidget": {
+				"": ""
+					,
+				"Anonymous": "promo-anonymous"
+					,
+				"NoDestinyAccount": "promo-no-account"
+					,
+				"NoLatestExpansion": "promo-no-expansion"
+					,
+				"HasLatestExpansion": "promo-has-expansion"
+			}
+				,
+		
+			"Publication": {
+			}
+				,
+		
+			"RegistrationBlock": {
+			}
+				,
+		
+			"ReleaseMarketingLink": {
+				"": ""
+					,
+				"DestinyPressRelease": "destiny-pressrelease"
+					,
+				"Featured": "news-featured"
+			}
+				,
+		
+			"Sale": {
+			}
+				,
+		
+			"ScheduledBroadcast": {
+			}
+				,
+		
+			"Screenshot": {
+			}
+				,
+		
+			"ServerToClientMessage": {
+			}
+				,
+		
+			"StaticAsset": {
+				"": ""
+					,
+				"AboutUs": "about us rotator"
+					,
+				"Careers": "careers rotator images"
+					,
+				"Foundation": "foundation rotator"
+					,
+				"HaloHeader": "halo header image"
+					,
+				"MarathonHeader": "marathon header image"
+					,
+				"MythHeader": "myth header image"
+			}
+				,
+		
+			"StreamingAlert": {
+			}
+				,
+		
+			"StringCollection": {
+				"": ""
+					,
+				"raid-race-filter-list": "raid-race-filter-list"
+			}
+				,
+		
+			"Stylesheet": {
+			}
+				,
+		
+			"Video": {
+			}
+				,
+		
+			"Wallpaper": {
+			}
+	};
+
+	TagMetadata.getTag = function(contentType, name, defaultValue)
+	{
+		return (TagMetadata[contentType] && TagMetadata[contentType][name])
+					? TagMetadata[contentType][name]
+					: defaultValue;
+	};
+</script>
+
+		<script type="text/javascript">
+			ServerVars.MinimalLayout = true;
+
+			var Localizer = Localizer || { CurrentCultureName: 'en' };
+		</script>
+
+			<!-- Localization -->
+			<script type="text/javascript" src="/JSLocalizer.ashx?cv=3983621215&amp;av=2659687936&amp;lc=en&amp;lcin=True&amp;fmt=True"></script>
+			<script type="text/javascript" src="/Scripts/bungienet/localizer.js?cv=3983621215&amp;av=2659687936"></script>
+
+		
+	<!-- Google Tag Manager -->
+	<script>
+		(function (w, d, s, l, i)
+		{
+			w[l] = w[l] || []; w[l].push({
+				'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+			}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-MQ5FZJQ');</script>
+	<!-- End Google Tag Manager -->
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+
+	
+ 
+	<link href="/areastyles/user?v=08hBC8fVuf1I8BzTzFWtF3Xogiz6oQIaEqy7YJDTyKM1" rel="stylesheet"/>
+
+
+	</head>
+<body class="SignUp Auth Register User ">
+
+
+
+
+
+<div id="user-container">
+	
+
+
+<div class="container-window">
+	<div class="logo-icon"></div>
+	<h1>Select the platform you play Destiny on.</h1>
+	
+		<div class="intro">
+			<p>If you play on multiple platforms, pick one now. You can link your other accounts later.</p>
+		</div>
+		<div class="buttons flex">
+
+				<a href="/en/User/SignIn/Xuid?bru=%252Fen%252FOAuth%252FAuthorize%253Fclient_id%253D37057%2526response_type%253Dcode%2526state%253DbdOqDW-9po.QSWkwiHOpyA9HTN2vSwbP3PNy35pDuZc&amp;flowStart=1" class="provider-selector-btn">
+					<div class="selector-content">
+						<div class="provider-icon" style="background-image: url(/7/ca/bungie/bgs/registration/platform_icons/xbox_icon.png)"></div>
+						<p class="provider-name">Xbox</p>
+					</div>
+				</a>
+				<a href="/en/User/SignIn/Psnid?bru=%252Fen%252FOAuth%252FAuthorize%253Fclient_id%253D37057%2526response_type%253Dcode%2526state%253DbdOqDW-9po.QSWkwiHOpyA9HTN2vSwbP3PNy35pDuZc&amp;flowStart=1" class="provider-selector-btn">
+					<div class="selector-content">
+						<div class="provider-icon" style="background-image: url(/7/ca/bungie/bgs/registration/platform_icons/playstation_icon.png)"></div>
+						<p class="provider-name">PlayStation</p>
+					</div>
+				</a>
+				<a href="/en/User/SignIn/SteamId?bru=%252Fen%252FOAuth%252FAuthorize%253Fclient_id%253D37057%2526response_type%253Dcode%2526state%253DbdOqDW-9po.QSWkwiHOpyA9HTN2vSwbP3PNy35pDuZc&amp;flowStart=1" class="provider-selector-btn">
+					<div class="selector-content">
+						<div class="provider-icon" style="background-image: url(/7/ca/bungie/bgs/registration/platform_icons/steam_icon.png)"></div>
+						<p class="provider-name">Steam</p>
+					</div>
+				</a>
+				<a href="/en/User/SignIn/StadiaId?bru=%252Fen%252FOAuth%252FAuthorize%253Fclient_id%253D37057%2526response_type%253Dcode%2526state%253DbdOqDW-9po.QSWkwiHOpyA9HTN2vSwbP3PNy35pDuZc&amp;flowStart=1" class="provider-selector-btn">
+					<div class="selector-content">
+						<div class="provider-icon" style="background-image: url(/7/ca/bungie/bgs/registration/platform_icons/stadia_icon.png)"></div>
+						<p class="provider-name">Stadia</p>
+					</div>
+				</a>
+				<a href="/en/User/SignIn/TwitchId?bru=%252Fen%252FOAuth%252FAuthorize%253Fclient_id%253D37057%2526response_type%253Dcode%2526state%253DbdOqDW-9po.QSWkwiHOpyA9HTN2vSwbP3PNy35pDuZc&amp;flowStart=1" class="provider-selector-btn">
+					<div class="selector-content">
+						<div class="provider-icon" style="background-image: url(/7/ca/bungie/bgs/registration/platform_icons/twitch_icon.png)"></div>
+						<p class="provider-name">Twitch</p>
+					</div>
+				</a>
+		</div>
+</div>
+
+
+<script> </script>
+
+</div>
+
+
+<div id="ServerVarsPageData">
+	<script type="text/javascript">
+
+		$.extend(ServerVars,
+			{
+				PageData: {"RouteValues":{"locale":"en","action":"JoinUp","controller":"User"},"BuyButton":{"FetchEntitlements":true},"PCMigration":{"PCMigrationLoginInterrupt":false,"PCMigrationSteamLocalStorageKey":"show-pcmigration-steam-interrupt","PCMigrationBlizzardLocalStorageKey":"show-pcmigration-blizzard-interrupt"},"SiteTagging":{"SessionTracking":true,"SessionTimeoutSeconds":1800}}
+			});
+	</script>
+</div>
+
+<script src="/sharedbundle/platformlib?v=-cAv-v8hLmyclXQWlbtZqQ9sS_ABuTepUhhopSNN8Z01"></script>
+
+<script src="/sharedbundle/before_render?v=hY7jAOmf8BHVdgpGGXYv_O_QCfhvJT2V-nqNcVwkeCA1"></script>
+
+<script src="/sharedbundle/utilities?v=aCCR9Xi0FaMI5f5FDNAxw6z6mR9LGmq8GdQoEuH0er41"></script>
+
+
+
+
+
+<script type="text/javascript">
+	bungieNetPlatform.platformSettings.initialize({
+		platformUrl: "/Platform",
+		baseUrl: "/",
+		currentLocale: 'en',
+		locInherit: 'true' == 'true',
+		isMobileDevice: 'false' == 'true',
+		isTouchDevice: Modernizr.touch,
+		renderContentEditLinks: 'false' == 'true',
+		internalLinkRegex:
+			/https?\:\/\/(((www)|(stage)|(alpha)|(nike)|(bnetdev)|(bnetint)|(static-internal)|(local-static)|(static01))\.bungie(store)?\.(net|com))/gi,
+		contentVersion: "94996.21.06.22.1900-3-bnet.38484"
+	});
+		
+	bungieNetPlatform.contentCache = {};
+	bungieNetPlatform.defaultData = {};
+
+	templateEngine.version = "cv=3983621215&av=2659687936";
+
+	//cancels all outstanding ajax calls via the bungienetPlatform
+	$(window)
+		.on("unload", function() {
+			for (var i = 0; i < currentRequests.length; i++)
+			{
+				currentRequests[i].abort();
+			}
+		});
+</script>
+
+<script src="/sharedbundle/site?v=hTCIAXlz2rSOgruWTVtCJ5ltilwIo71MtRNaecx3I-01"></script>
+
+<script src="/sharedbundle/uikit?v=G5uq68KIUjVg6tuzQspL_Xm8FAu-ntYfzMEMQ_-J_HA1"></script>
+
+
+
+	
+
+	<script src="/areascripts/user?v=CzRJoOspiHso7988ohLrPqSodXQ5KALMh4GQyWV0g-Y1"></script>
+
+
+
+</body>
+
+</html>
