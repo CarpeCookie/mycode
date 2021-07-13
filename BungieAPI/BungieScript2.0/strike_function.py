@@ -174,6 +174,210 @@ def Warlock_Strike_History():
         print("\nInvalid Input. Try Again.\n")
         Warlock_Strike_History()
 
+def Hunter_Strike_History():
+    print("Strike Menu: \n1. Strike One\n2. Strike Two\n3. Strike Three\n4. Strike Four\n5. Strike Five\n6. Strike Menu\n7. Main Menu\n8. Quit")
+    Strike_History_Menu = input()
+    if Strike_History_Menu == "1":
+        history = requests.get("https://www.bungie.net/Platform/Destiny2/" + membershiptype + "/Account/" + membershipId + "/Character/" + hunterid + "/Stats/Activities/?count=5&mode=3&page=0", headers=HEADERS)
+        history = history.json()
+        strike_stats = history['Response']['activities'][0]['values']
+        assists = strike_stats['assists']['basic']['value']
+        kills = strike_stats['kills']['basic']['value']
+        deaths = strike_stats['deaths']['basic']['value']
+        KDA = strike_stats['killsDeathsAssists']['basic']['value']
+        length = strike_stats['timePlayedSeconds']['basic']['displayValue']
+        print("\n \nTime: ", length)
+        print("Kills: ", kills)
+        print("Deaths: ", deaths)
+        print("Assists: ", assists)
+        print("KDA: :", KDA)
+        print("\n \n")
+        Hunter_Strike_History()
+   
+    elif Strike_History_Menu == "2":
+        history = requests.get("https://www.bungie.net/Platform/Destiny2/" + membershiptype + "/Account/" + membershipId + "/Character/" + hunterid + "/Stats/Activities/?count=5&mode=3&page=0", headers=HEADERS)
+        history = history.json()
+        strike_stats = history['Response']['activities'][1]['values']
+        assists = strike_stats['assists']['basic']['value']
+        kills = strike_stats['kills']['basic']['value']
+        deaths = strike_stats['deaths']['basic']['value']
+        KDA = strike_stats['killsDeathsAssists']['basic']['value']
+        length = strike_stats['timePlayedSeconds']['basic']['displayValue']
+        print("\n \nTime: ", length)
+        print("Kills: ", kills)
+        print("Deaths: ", deaths)
+        print("Assists: ", assists)
+        print("KDA: :", KDA)
+        print("\n \n")
+        Hunter_Strike_History()        
+        
+    elif Strike_History_Menu == "3":
+        history = requests.get("https://www.bungie.net/Platform/Destiny2/" + membershiptype + "/Account/" + membershipId + "/Character/" + hunterid + "/Stats/Activities/?count=5&mode=3&page=0", headers=HEADERS)
+        history = history.json()
+        strike_stats = history['Response']['activities'][2]['values']
+        assists = strike_stats['assists']['basic']['value']
+        kills = strike_stats['kills']['basic']['value']
+        deaths = strike_stats['deaths']['basic']['value']
+        KDA = strike_stats['killsDeathsAssists']['basic']['value']
+        length = strike_stats['timePlayedSeconds']['basic']['displayValue']
+        print("\n \nTime: ", length)
+        print("Kills: ", kills)
+        print("Deaths: ", deaths)
+        print("Assists: ", assists)
+        print("KDA: :", KDA)
+        print("\n \n")
+        Hunter_Strike_History()
+
+    elif Strike_History_Menu == "4":
+        history = requests.get("https://www.bungie.net/Platform/Destiny2/" + membershiptype + "/Account/" + membershipId + "/Character/" + warlockid + "/Stats/Activities/?count=5&mode=3&page=0", headers=HEADERS)
+        history = history.json()
+        strike_stats = history['Response']['activities'][3]['values']
+        assists = strike_stats['assists']['basic']['value']
+        kills = strike_stats['kills']['basic']['value']
+        deaths = strike_stats['deaths']['basic']['value']
+        KDA = strike_stats['killsDeathsAssists']['basic']['value']
+        length = strike_stats['timePlayedSeconds']['basic']['displayValue']
+        print("\n \nTime: ", length)
+        print("Kills: ", kills)
+        print("Deaths: ", deaths)
+        print("Assists: ", assists)
+        print("KDA: :", KDA)
+        print("\n \n")
+        Hunter_Strike_History()
+        
+    elif Strike_History_Menu == "5":
+        history = requests.get("https://www.bungie.net/Platform/Destiny2/" + membershiptype + "/Account/" + membershipId + "/Character/" + hunterid + "/Stats/Activities/?count=5&mode=3&page=0", headers=HEADERS)
+        history = history.json()
+        strike_stats = history['Response']['activities'][4]['values']
+        assists = strike_stats['assists']['basic']['value']
+        kills = strike_stats['kills']['basic']['value']
+        deaths = strike_stats['deaths']['basic']['value']
+        KDA = strike_stats['killsDeathsAssists']['basic']['value']
+        length = strike_stats['timePlayedSeconds']['basic']['displayValue']
+        print("\n \nTime: ", length)
+        print("Kills: ", kills)
+        print("Deaths: ", deaths)
+        print("Assists: ", assists)
+        print("KDA: :", KDA)
+        print("\n \n")
+        Hunter_Strike_History()
+
+    elif Strike_History_Menu == "6":
+        Strike_Menu()
+
+    elif Strike_History_Menu == "7":
+        main()
+
+    elif Strike_History_Menu == "8":
+        quit()
+    
+    else:
+        print("\nInvalid Input. Try Again.\n")
+        Hunter_Strike_History()
+
+def Titan_Strike_History():
+    print("Strike Menu: \n1. Strike One\n2. Strike Two\n3. Strike Three\n4. Strike Four\n5. Strike Five\n6. Strike Menu\n7. Main Menu\n8. Quit")
+    Strike_History_Menu = input()
+    if Strike_History_Menu == "1":
+        history = requests.get("https://www.bungie.net/Platform/Destiny2/" + membershiptype + "/Account/" + membershipId + "/Character/" + titanid + "/Stats/Activities/?count=5&mode=3&page=0", headers=HEADERS)
+        history = history.json()
+        strike_stats = history['Response']['activities'][0]['values']
+        assists = strike_stats['assists']['basic']['value']
+        kills = strike_stats['kills']['basic']['value']
+        deaths = strike_stats['deaths']['basic']['value']
+        KDA = strike_stats['killsDeathsAssists']['basic']['value']
+        length = strike_stats['timePlayedSeconds']['basic']['displayValue']
+        print("\n \nTime: ", length)
+        print("Kills: ", kills)
+        print("Deaths: ", deaths)
+        print("Assists: ", assists)
+        print("KDA: :", KDA)
+        print("\n \n")
+        Titan_Strike_History()
+   
+    elif Strike_History_Menu == "2":
+        history = requests.get("https://www.bungie.net/Platform/Destiny2/" + membershiptype + "/Account/" + membershipId + "/Character/" + titanid + "/Stats/Activities/?count=5&mode=3&page=0", headers=HEADERS)
+        history = history.json()
+        strike_stats = history['Response']['activities'][1]['values']
+        assists = strike_stats['assists']['basic']['value']
+        kills = strike_stats['kills']['basic']['value']
+        deaths = strike_stats['deaths']['basic']['value']
+        KDA = strike_stats['killsDeathsAssists']['basic']['value']
+        length = strike_stats['timePlayedSeconds']['basic']['displayValue']
+        print("\n \nTime: ", length)
+        print("Kills: ", kills)
+        print("Deaths: ", deaths)
+        print("Assists: ", assists)
+        print("KDA: :", KDA)
+        print("\n \n")
+        Titan_Strike_History()        
+        
+    elif Strike_History_Menu == "3":
+        history = requests.get("https://www.bungie.net/Platform/Destiny2/" + membershiptype + "/Account/" + membershipId + "/Character/" + titanid + "/Stats/Activities/?count=5&mode=3&page=0", headers=HEADERS)
+        history = history.json()
+        strike_stats = history['Response']['activities'][2]['values']
+        assists = strike_stats['assists']['basic']['value']
+        kills = strike_stats['kills']['basic']['value']
+        deaths = strike_stats['deaths']['basic']['value']
+        KDA = strike_stats['killsDeathsAssists']['basic']['value']
+        length = strike_stats['timePlayedSeconds']['basic']['displayValue']
+        print("\n \nTime: ", length)
+        print("Kills: ", kills)
+        print("Deaths: ", deaths)
+        print("Assists: ", assists)
+        print("KDA: :", KDA)
+        print("\n \n")
+        Titan_Strike_History()
+
+    elif Strike_History_Menu == "4":
+        history = requests.get("https://www.bungie.net/Platform/Destiny2/" + membershiptype + "/Account/" + membershipId + "/Character/" + titanid + "/Stats/Activities/?count=5&mode=3&page=0", headers=HEADERS)
+        history = history.json()
+        strike_stats = history['Response']['activities'][3]['values']
+        assists = strike_stats['assists']['basic']['value']
+        kills = strike_stats['kills']['basic']['value']
+        deaths = strike_stats['deaths']['basic']['value']
+        KDA = strike_stats['killsDeathsAssists']['basic']['value']
+        length = strike_stats['timePlayedSeconds']['basic']['displayValue']
+        print("\n \nTime: ", length)
+        print("Kills: ", kills)
+        print("Deaths: ", deaths)
+        print("Assists: ", assists)
+        print("KDA: :", KDA)
+        print("\n \n")
+        Titan_Strike_History()
+        
+    elif Strike_History_Menu == "5":
+        history = requests.get("https://www.bungie.net/Platform/Destiny2/" + membershiptype + "/Account/" + membershipId + "/Character/" + titanid + "/Stats/Activities/?count=5&mode=3&page=0", headers=HEADERS)
+        history = history.json()
+        strike_stats = history['Response']['activities'][4]['values']
+        assists = strike_stats['assists']['basic']['value']
+        kills = strike_stats['kills']['basic']['value']
+        deaths = strike_stats['deaths']['basic']['value']
+        KDA = strike_stats['killsDeathsAssists']['basic']['value']
+        length = strike_stats['timePlayedSeconds']['basic']['displayValue']
+        print("\n \nTime: ", length)
+        print("Kills: ", kills)
+        print("Deaths: ", deaths)
+        print("Assists: ", assists)
+        print("KDA: :", KDA)
+        print("\n \n")
+        Titan_Strike_History()
+
+    elif Strike_History_Menu == "6":
+        Strike_Menu()
+
+    elif Strike_History_Menu == "7":
+        main()
+
+    elif Strike_History_Menu == "8":
+        quit()
+    
+    else:
+        print("\nInvalid Input. Try Again.\n")
+        Titan_Strike_History()
+
+
+
 
 
 main()
