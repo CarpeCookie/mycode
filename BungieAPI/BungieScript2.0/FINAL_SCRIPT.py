@@ -8,7 +8,9 @@ searchdestinyprofile = requests.get("https://www.bungie.net/Platform/Destiny2/Se
 # we do this request to pull user profile information.  This is the first request and doesn't require backend information, just the username and console.
 
 destinyprofile = searchdestinyprofile.json()    
+
 #the dictiontary its placed into
+membershiptype = "2"
 
 destinyprofile_response = destinyprofile['Response']
 destinyprofile_data = destinyprofile_response[0]
@@ -37,19 +39,17 @@ print("Welcome to Matt's Test App! Utilizing the the Bungie API, we can gather i
 
 
 def Main_Menu():
-    print("\nMain Menu: \n1: Equipped Gear\n2: Lore\n3: Match History (Crucible)\n4: Match History (Strikes)\n5: Clan info\n6: Exit Script")
+    print("\nMain Menu: \n1: Equipped Gear\n2: Match History (Crucible)\n3: Match History (Strikes)\n4: Clan info\n5: Exit Script")
     Main_Menu_Input = input()
     if Main_Menu_Input == "1":
         Equipment_Menu()
     elif Main_Menu_Input == "2":
-        Lore_Menu()
-    elif Main_Menu_Input == "3":
         Crucible_Menu()
-    elif Main_Menu_Input == "4":
+    elif Main_Menu_Input == "3":
         Strike_Menu()
-    elif Main_Menu_Input == "5":
+    elif Main_Menu_Input == "4":
         Clan_Menu()
-    elif Main_Menu_Input == "6":
+    elif Main_Menu_Input == "5":
         quit()
     else:
         print("\n \nInvalid Input. Try Again.\n \n")
@@ -59,7 +59,7 @@ def Main_Menu():
 
 
 def Equipment_Menu():
-    print("Equipped Gear:\n1: Print Gear\n2: Print Stats\n3. How's Your Look?\n4. Go Back\n5: Quit")
+    print("\nEquipped Gear:\n1: Print Gear\n2: Print Stats\n3. How's Your Look?\n4. Go Back\n5: Quit")
     Equipped_Gear = input()
     if Equipped_Gear == "1":
         Print_Gear()
@@ -68,7 +68,7 @@ def Equipment_Menu():
  #   elif Equipped_Gear == "3":
  #       Check_Fashion()
     elif Equipped_Gear == "4":
-        main()
+        Main_Menu()
     elif Equipped_Gear == "5":
         quit()
     else:
@@ -77,7 +77,7 @@ def Equipment_Menu():
 #The Equipment submenu.  Same logic as the Main_Menu.  Simplify it by calling other functions.
     
 def Print_Gear():    
-    print("For which Character?\n1: Warlock\n2: Hunter\n3: Titan\n4: Equipment Menu\n5: Main Menu\n6: Quit")
+    print("\nFor which Character?\n1: Warlock\n2: Hunter\n3: Titan\n4: Equipment Menu\n5: Main Menu\n6: Quit")
     Character = input()
     if Character == "1":
         gear = requests.get("https://www.bungie.net/Platform/Destiny2/2/Profile/" + membershipId + "/Character/" + warlockid + "/?components=205", headers=HEADERS)
@@ -195,7 +195,7 @@ def Print_Gear():
         Print_Gear()
 
 def Print_Stats():
-    print("For which Character?\n1: Warlock\n2: Hunter\n3: Titan\n4: Equipment Menu\n5: Main Menu\n6: Quit")
+    print("\nFor which Character?\n1: Warlock\n2: Hunter\n3: Titan\n4: Equipment Menu\n5: Main Menu\n6: Quit")
     Character = input()
     character_stats = requests.get("https://www.bungie.net/Platform/Destiny2/2/Profile/" + membershipId + "/?components=200", headers=HEADERS)
     character_stats = character_stats.json()
@@ -268,7 +268,7 @@ def Print_Stats():
 
 
 def Crucible_Menu():
-    print("Crucible Menu: \n1. Warlock\n2. Hunter\n3. Titan\n4. Main Menu\n5. Quit")    
+    print("\nCrucible Menu: \n1. Warlock\n2. Hunter\n3. Titan\n4. Main Menu\n5. Quit")    
     Crucible_Menu_Input = input()
     if Crucible_Menu_Input == "1":
         Warlock_Crucible_History()
@@ -286,7 +286,7 @@ def Crucible_Menu():
 #Simple Menu calling on functions to 
 
 def Warlock_Crucible_History():    
-    print("Crucible Menu: \n1. Match One\n2. Match Two\n3. Match Three\n4. Match Four\n5. Match Five\n6. Crucible Menu\n7. Main Menu\n8. Quit")
+    print("\nWarlock Crucible Menu: \n1. Match One\n2. Match Two\n3. Match Three\n4. Match Four\n5. Match Five\n6. Crucible Menu\n7. Main Menu\n8. Quit")
     Crucible_History_Menu = input()
     if Crucible_History_Menu == "1":
         history = requests.get("https://www.bungie.net/Platform/Destiny2/" + membershiptype + "/Account/" + membershipId + "/Character/" + warlockid + "/Stats/Activities/?count=5&mode=5&page=0", headers=HEADERS)
@@ -444,7 +444,7 @@ def Warlock_Crucible_History():
         Crucible_Menu()
 
     elif Crucible_History_Menu == "7":
-        main()
+        Main_Menu()
 
     elif Crucible_History_Menu == "8":
         quit()
@@ -454,7 +454,7 @@ def Warlock_Crucible_History():
         Warlock_Crucible_History()
 
 def Hunter_Crucible_History():    
-    print("Crucible Menu: \n1. Match One\n2. Match Two\n3. Match Three\n4. Match Four\n5. Match Five\n6. Crucible Menu\n7. Main Menu\n8. Quit")
+    print("\nHunter Crucible Menu: \n1. Match One\n2. Match Two\n3. Match Three\n4. Match Four\n5. Match Five\n6. Crucible Menu\n7. Main Menu\n8. Quit")
     Crucible_History_Menu = input()
     if Crucible_History_Menu == "1":
         history = requests.get("https://www.bungie.net/Platform/Destiny2/" + membershiptype + "/Account/" + membershipId + "/Character/" + hunterid + "/Stats/Activities/?count=5&mode=5&page=0", headers=HEADERS)
@@ -610,7 +610,7 @@ def Hunter_Crucible_History():
         Crucible_Menu()
 
     elif Crucible_History_Menu == "7":
-        main()
+        Main_Menu()
 
     elif Crucible_History_Menu == "8":
         quit()
@@ -620,7 +620,7 @@ def Hunter_Crucible_History():
         Hunter_Crucible_History()
 
 def Titan_Crucible_History():    
-    print("Crucible Menu: \n1. Match One\n2. Match Two\n3. Match Three\n4. Match Four\n5. Match Five\n6. Crucible Menu\n7. Main Menu\n8. Quit")
+    print("\nTitan Crucible Menu: \n1. Match One\n2. Match Two\n3. Match Three\n4. Match Four\n5. Match Five\n6. Crucible Menu\n7. Main Menu\n8. Quit")
     Crucible_History_Menu = input()
     if Crucible_History_Menu == "1":
         history = requests.get("https://www.bungie.net/Platform/Destiny2/" + membershiptype + "/Account/" + membershipId + "/Character/" + titanid + "/Stats/Activities/?count=5&mode=5&page=0", headers=HEADERS)
@@ -776,7 +776,7 @@ def Titan_Crucible_History():
         Crucible_Menu()
 
     elif Crucible_History_Menu == "7":
-        main()
+        Main_Menu()
 
     elif Crucible_History_Menu == "8":
         quit()
@@ -788,7 +788,7 @@ def Titan_Crucible_History():
 
 
 def Strike_Menu():
-    print("Strike Menu: \n1. Warlock\n2. Hunter\n3. Titan\n4. Main Menu\n5. Quit")
+    print("\nStrike Menu: \n1. Warlock\n2. Hunter\n3. Titan\n4. Main Menu\n5. Quit")
     Strike_Menu_Input = input()
     if Strike_Menu_Input == "1":
         Warlock_Strike_History()
@@ -806,7 +806,7 @@ def Strike_Menu():
 #Again, a menu that just calls on functions
 
 def Warlock_Strike_History():
-    print("Strike Menu: \n1. Strike One\n2. Strike Two\n3. Strike Three\n4. Strike Four\n5. Strike Five\n6. Strike Menu\n7. Main Menu\n8. Quit")
+    print("\nWarlock Strike Menu: \n1. Strike One\n2. Strike Two\n3. Strike Three\n4. Strike Four\n5. Strike Five\n6. Strike Menu\n7. Main Menu\n8. Quit")
     Strike_History_Menu = input()
     if Strike_History_Menu == "1":
         history = requests.get("https://www.bungie.net/Platform/Destiny2/" + membershiptype + "/Account/" + membershipId + "/Character/" + warlockid + "/Stats/Activities/?count=5&mode=3&page=0", headers=HEADERS)
@@ -899,7 +899,7 @@ def Warlock_Strike_History():
         Strike_Menu()
 
     elif Strike_History_Menu == "7":
-        main()
+        Main_Menu()
 
     elif Strike_History_Menu == "8":
         quit()
@@ -911,7 +911,7 @@ def Warlock_Strike_History():
 
 
 def Hunter_Strike_History():
-    print("Strike Menu: \n1. Strike One\n2. Strike Two\n3. Strike Three\n4. Strike Four\n5. Strike Five\n6. Strike Menu\n7. Main Menu\n8. Quit")
+    print("\nHunter Strike Menu: \n1. Strike One\n2. Strike Two\n3. Strike Three\n4. Strike Four\n5. Strike Five\n6. Strike Menu\n7. Main Menu\n8. Quit")
     Strike_History_Menu = input()
     if Strike_History_Menu == "1":
         history = requests.get("https://www.bungie.net/Platform/Destiny2/" + membershiptype + "/Account/" + membershipId + "/Character/" + hunterid + "/Stats/Activities/?count=5&mode=3&page=0", headers=HEADERS)
@@ -1002,7 +1002,7 @@ def Hunter_Strike_History():
         Strike_Menu()
 
     elif Strike_History_Menu == "7":
-        main()
+        Main_Menu()
 
     elif Strike_History_Menu == "8":
         quit()
@@ -1012,7 +1012,7 @@ def Hunter_Strike_History():
         Hunter_Strike_History()
 
 def Titan_Strike_History():
-    print("Strike Menu: \n1. Strike One\n2. Strike Two\n3. Strike Three\n4. Strike Four\n5. Strike Five\n6. Strike Menu\n7. Main Menu\n8. Quit")
+    print("\n Titan Strike Menu: \n1. Strike One\n2. Strike Two\n3. Strike Three\n4. Strike Four\n5. Strike Five\n6. Strike Menu\n7. Main Menu\n8. Quit")
     Strike_History_Menu = input()
     if Strike_History_Menu == "1":
         history = requests.get("https://www.bungie.net/Platform/Destiny2/" + membershiptype + "/Account/" + membershipId + "/Character/" + titanid + "/Stats/Activities/?count=5&mode=3&page=0", headers=HEADERS)
@@ -1103,7 +1103,7 @@ def Titan_Strike_History():
         Strike_Menu()
 
     elif Strike_History_Menu == "7":
-        main()
+        Main_Menu()
 
     elif Strike_History_Menu == "8":
         quit()
@@ -1112,9 +1112,153 @@ def Titan_Strike_History():
         print("\nInvalid Input. Try Again.\n")
         Titan_Strike_History()
 
+def Clan_Menu():
+    print("\nClan Menu:\n1: Crucible Leaderboards\n2: Strike Leaderboards\n3: Raid Leaderboards\n4: Main Menu\n5: Quit\n")
+    Clan_Function_Input = input()
+    if Clan_Function_Input == "1":
+        Clan_Crucible()
+    elif Clan_Function_Input == "2":
+        Clan_Strikes()
+    elif Clan_Function_Input == "3":
+        Clan_Raids()
+    elif Clan_Function_Input == "4":
+        Main_Menu()
+    elif Clan_Function_Input == "5":
+        quit()
+    else:
+        print("\n \nInvalid Input. Try Again.\n \n")
+        Clan_Menu()
+
+def Clan_Crucible():
+    print("\nCrucible Leaderboards:\n1: Kills\n2: Deaths\n3: Assists\n4: Clan Menu\n5: Main Menu\n6: Quit\n")
+    Clan_Crucible_Input = input()
+    leaderboard = requests.get("https://www.bungie.net/Platform/Destiny2/Stats/Leaderboards/Clans/4228101/?maxtop=5&modes=5", headers=HEADERS)
+    leaderboard = leaderboard.json()
+    leaderboard = leaderboard['Response']['allPvP']
+    if Clan_Crucible_Input == "1":
+        kills = leaderboard['lbKills']['entries']
+        print("\nKILLS:")
+        print("1: ", kills[0]['player']['destinyUserInfo']['displayName'], kills[0]['value']['basic']['value'])
+        print("2: ", kills[1]['player']['destinyUserInfo']['displayName'], kills[1]['value']['basic']['value'])
+        print("3: ", kills[2]['player']['destinyUserInfo']['displayName'], kills[2]['value']['basic']['value'])
+        print("4: ", kills[3]['player']['destinyUserInfo']['displayName'], kills[3]['value']['basic']['value'])
+        print("5: ", kills[4]['player']['destinyUserInfo']['displayName'], kills[4]['value']['basic']['value'], "\n")
+        Clan_Crucible()
+    elif Clan_Crucible_Input == "2":
+        deaths = leaderboard['lbDeaths']['entries']
+        print("\nDEATHS:")
+        print("1: ", deaths[0]['player']['destinyUserInfo']['displayName'], deaths[0]['value']['basic']['value'])
+        print("2: ", deaths[1]['player']['destinyUserInfo']['displayName'], deaths[1]['value']['basic']['value'])
+        print("3: ", deaths[2]['player']['destinyUserInfo']['displayName'], deaths[2]['value']['basic']['value'])
+        print("4: ", deaths[3]['player']['destinyUserInfo']['displayName'], deaths[3]['value']['basic']['value'])
+        print("5: ", deaths[4]['player']['destinyUserInfo']['displayName'], deaths[4]['value']['basic']['value'], "\n")
+        Clan_Crucible()
+    elif Clan_Crucible_Input == "3":
+        assists = leaderboard['lbAssists']['entries']
+        print("\nASSISTS:")
+        print("1: ", assists[0]['player']['destinyUserInfo']['displayName'], assists[0]['value']['basic']['value'])
+        print("2: ", assists[1]['player']['destinyUserInfo']['displayName'], assists[1]['value']['basic']['value'])
+        print("3: ", assists[2]['player']['destinyUserInfo']['displayName'], assists[2]['value']['basic']['value'])
+        print("4: ", assists[3]['player']['destinyUserInfo']['displayName'], assists[3]['value']['basic']['value'])
+        print("5: ", assists[4]['player']['destinyUserInfo']['displayName'], assists[4]['value']['basic']['value'], "\n")
+        Clan_Crucible()
+    elif Clan_Crucible_Input == "4":
+        Clan_Menu()
+    elif Clan_Crucible_Input == "5":
+        Main_Menu()
+    elif Clan_Crucible_Input == "6":
+        quit()
+    else: 
+        print("\nInvalid Input. Try Again.\n")
+        Clan_Crucible()
 
 
+def Clan_Strikes():
+    print("\nStrike Leaderboards:\n1: Kills\n2: Deaths\n3: Assists\n4: Clan Menu\n5: Main Menu\n6: Quit\n")
+    Clan_Strikes_Input = input()
+    leaderboard = requests.get("https://www.bungie.net/Platform/Destiny2/Stats/Leaderboards/Clans/4228101/?maxtop=5&modes=3", headers=HEADERS)
+    leaderboard = leaderboard.json()
+    leaderboard = leaderboard['Response']['strike']
+    if Clan_Strikes_Input == "1":
+        kills = leaderboard['lbKills']['entries']
+        print("\nKILLS:")
+        print("1: ", kills[0]['player']['destinyUserInfo']['displayName'], kills[0]['value']['basic']['value'])
+        print("2: ", kills[1]['player']['destinyUserInfo']['displayName'], kills[1]['value']['basic']['value'])
+        print("3: ", kills[2]['player']['destinyUserInfo']['displayName'], kills[2]['value']['basic']['value'])
+        print("4: ", kills[3]['player']['destinyUserInfo']['displayName'], kills[3]['value']['basic']['value'])
+        print("5: ", kills[4]['player']['destinyUserInfo']['displayName'], kills[4]['value']['basic']['value'], "\n")
+        Clan_Strikes()
+    elif Clan_Strikes_Input == "2":
+        deaths = leaderboard['lbDeaths']['entries']
+        print("\nDEATHS:")
+        print("1: ", deaths[0]['player']['destinyUserInfo']['displayName'], deaths[0]['value']['basic']['value'])
+        print("2: ", deaths[1]['player']['destinyUserInfo']['displayName'], deaths[1]['value']['basic']['value'])
+        print("3: ", deaths[2]['player']['destinyUserInfo']['displayName'], deaths[2]['value']['basic']['value'])
+        print("4: ", deaths[3]['player']['destinyUserInfo']['displayName'], deaths[3]['value']['basic']['value'])
+        print("5: ", deaths[4]['player']['destinyUserInfo']['displayName'], deaths[4]['value']['basic']['value'], "\n")
+        Clan_Strikes()
+    elif Clan_Strikes_Input == "3":
+        assists = leaderboard['lbAssists']['entries']
+        print("\nASSISTS:")
+        print("1: ", assists[0]['player']['destinyUserInfo']['displayName'], assists[0]['value']['basic']['value'])
+        print("2: ", assists[1]['player']['destinyUserInfo']['displayName'], assists[1]['value']['basic']['value'])
+        print("3: ", assists[2]['player']['destinyUserInfo']['displayName'], assists[2]['value']['basic']['value'])
+        print("4: ", assists[3]['player']['destinyUserInfo']['displayName'], assists[3]['value']['basic']['value'])
+        print("5: ", assists[4]['player']['destinyUserInfo']['displayName'], assists[4]['value']['basic']['value'], "\n")
+        Clan_Strikes()
+    elif Clan_Strikes_Input == "4":
+        Clan_Menu()
+    elif Clan_Strikes_Input == "5":
+        Main_Menu()
+    elif Clan_Strikes_Input == "6":
+        quit()
+    else:
+        print("\nInvalid Input. Try Again.\n")
+        Clan_Strikes()
 
+
+def Clan_Raids():
+    print("\nRaid Leaderboards:\n1: Kills\n2: Deaths\n3: Assists\n4: Clan Menu\n5: Main Menu\n6: Quit\n")
+    Clan_Raids_Input = input()
+    leaderboard = requests.get("https://www.bungie.net/Platform/Destiny2/Stats/Leaderboards/Clans/4228101/?maxtop=5&modes=4", headers=HEADERS)
+    leaderboard = leaderboard.json()
+    leaderboard = leaderboard['Response']['raid']
+    if Clan_Raids_Input == "1":
+        kills = leaderboard['lbKills']['entries']
+        print("\nKILLS:")
+        print("1: ", kills[0]['player']['destinyUserInfo']['displayName'], kills[0]['value']['basic']['value'])
+        print("2: ", kills[1]['player']['destinyUserInfo']['displayName'], kills[1]['value']['basic']['value'])
+        print("3: ", kills[2]['player']['destinyUserInfo']['displayName'], kills[2]['value']['basic']['value'])
+        print("4: ", kills[3]['player']['destinyUserInfo']['displayName'], kills[3]['value']['basic']['value'])
+        print("5: ", kills[4]['player']['destinyUserInfo']['displayName'], kills[4]['value']['basic']['value'], "\n")
+        Clan_Raids()
+    elif Clan_Raids_Input == "2":
+        deaths = leaderboard['lbDeaths']['entries']
+        print("\nDEATHS:")
+        print("1: ", deaths[0]['player']['destinyUserInfo']['displayName'], deaths[0]['value']['basic']['value'])
+        print("2: ", deaths[1]['player']['destinyUserInfo']['displayName'], deaths[1]['value']['basic']['value'])
+        print("3: ", deaths[2]['player']['destinyUserInfo']['displayName'], deaths[2]['value']['basic']['value'])
+        print("4: ", deaths[3]['player']['destinyUserInfo']['displayName'], deaths[3]['value']['basic']['value'])
+        print("5: ", deaths[4]['player']['destinyUserInfo']['displayName'], deaths[4]['value']['basic']['value'], "\n")
+        Clan_Raids()
+    elif Clan_Raids_Input == "3":
+        assists = leaderboard['lbAssists']['entries']
+        print("\nASSISTS:")
+        print("1: ", assists[0]['player']['destinyUserInfo']['displayName'], assists[0]['value']['basic']['value'])
+        print("2: ", assists[1]['player']['destinyUserInfo']['displayName'], assists[1]['value']['basic']['value'])
+        print("3: ", assists[2]['player']['destinyUserInfo']['displayName'], assists[2]['value']['basic']['value'])
+        print("4: ", assists[3]['player']['destinyUserInfo']['displayName'], assists[3]['value']['basic']['value'])
+        print("5: ", assists[4]['player']['destinyUserInfo']['displayName'], assists[4]['value']['basic']['value'], "\n")
+        Clan_Raids()
+    elif Clan_Raids_Input == "4":
+        Clan_Menu()
+    elif Clan_Raids_Input == "5":
+        Main_Menu()
+    elif Clan_Raids_Input == "6":
+        quit()
+    else:
+        print("\nInvalid Input. Try Again.\n")
+        Clan_Raids()
 
 
 

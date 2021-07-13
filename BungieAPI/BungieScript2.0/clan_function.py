@@ -88,7 +88,7 @@ def Clan_Crucible():
         print("4: ", kills[3]['player']['destinyUserInfo']['displayName'])
         print("5: ", kills[4]['player']['destinyUserInfo']['displayName'], "\n")
         Clan_Crucible()
-    if Clan_Crucible_Input == "2":
+    elif Clan_Crucible_Input == "2":
         deaths = leaderboard['lbDeaths']['entries']
         print("\nDEATHS:")
         print("1: ", deaths[0]['player']['destinyUserInfo']['displayName'])
@@ -97,7 +97,7 @@ def Clan_Crucible():
         print("4: ", deaths[3]['player']['destinyUserInfo']['displayName'])
         print("5: ", deaths[4]['player']['destinyUserInfo']['displayName'], "\n")
         Clan_Crucible()
-    if Clan_Crucible_Input == "3":
+    elif Clan_Crucible_Input == "3":
         assists = leaderboard['lbAssists']['entries']
         print("\nASSISTS:")
         print("1: ", assists[0]['player']['destinyUserInfo']['displayName'])
@@ -106,11 +106,11 @@ def Clan_Crucible():
         print("4: ", assists[3]['player']['destinyUserInfo']['displayName'])
         print("5: ", assists[4]['player']['destinyUserInfo']['displayName'], "\n")
         Clan_Crucible()
-    if Clan_Crucible_Input == "4":
+    elif Clan_Crucible_Input == "4":
         Clan_Menu()
-    if Clan_Crucible_Input == "5":
+    elif Clan_Crucible_Input == "5":
         Main_Menu()
-    if Clan_Crucible_Input == "6":
+    elif Clan_Crucible_Input == "6":
         quit()
     else: 
         print("\nInvalid Input. Try Again.\n")
@@ -132,7 +132,7 @@ def Clan_Strikes():
         print("4: ", kills[3]['player']['destinyUserInfo']['displayName'])
         print("5: ", kills[4]['player']['destinyUserInfo']['displayName'], "\n")
         Clan_Strikes()
-    if Clan_Strikes_Input == "2":
+    elif Clan_Strikes_Input == "2":
         deaths = leaderboard['lbDeaths']['entries']
         print("\nDEATHS:")
         print("1: ", deaths[0]['player']['destinyUserInfo']['displayName'])
@@ -141,7 +141,7 @@ def Clan_Strikes():
         print("4: ", deaths[3]['player']['destinyUserInfo']['displayName'])
         print("5: ", deaths[4]['player']['destinyUserInfo']['displayName'], "\n")
         Clan_Strikes()
-    if Clan_Strikes_Input == "3":
+    elif Clan_Strikes_Input == "3":
         assists = leaderboard['lbAssists']['entries']
         print("\nASSISTS:")
         print("1: ", assists[0]['player']['destinyUserInfo']['displayName'])
@@ -150,11 +150,11 @@ def Clan_Strikes():
         print("4: ", assists[3]['player']['destinyUserInfo']['displayName'])
         print("5: ", assists[4]['player']['destinyUserInfo']['displayName'], "\n")
         Clan_Strikes()
-    if Clan_Strikes_Input == "4":
+    elif Clan_Strikes_Input == "4":
         Clan_Menu()
-    if Clan_Strikes_Input == "5":
+    elif Clan_Strikes_Input == "5":
         Main_Menu()
-    if Clan_Strikes_Input == "6":
+    elif Clan_Strikes_Input == "6":
         quit()
     else:
         print("\nInvalid Input. Try Again.\n")
@@ -176,7 +176,7 @@ def Clan_Raids():
         print("4: ", kills[3]['player']['destinyUserInfo']['displayName'])
         print("5: ", kills[4]['player']['destinyUserInfo']['displayName'], "\n")
         Clan_Raids()
-    if Clan_Raids_Input == "2":
+    elif Clan_Raids_Input == "2":
         deaths = leaderboard['lbDeaths']['entries']
         print("\nDEATHS:")
         print("1: ", deaths[0]['player']['destinyUserInfo']['displayName'])
@@ -185,7 +185,7 @@ def Clan_Raids():
         print("4: ", deaths[3]['player']['destinyUserInfo']['displayName'])
         print("5: ", deaths[4]['player']['destinyUserInfo']['displayName'], "\n")
         Clan_Raids()
-    if Clan_Raids_Input == "3":
+    elif Clan_Raids_Input == "3":
         assists = leaderboard['lbAssists']['entries']
         print("\nASSISTS:")
         print("1: ", assists[0]['player']['destinyUserInfo']['displayName'])
@@ -194,11 +194,11 @@ def Clan_Raids():
         print("4: ", assists[3]['player']['destinyUserInfo']['displayName'])
         print("5: ", assists[4]['player']['destinyUserInfo']['displayName'], "\n")
         Clan_Raids()
-    if Clan_Raids_Input == "4":
+    elif Clan_Raids_Input == "4":
         Clan_Menu()
-    if Clan_Raids_Input == "5":
+    elif Clan_Raids_Input == "5":
         Main_Menu()
-    if Clan_Raids_Input == "6":
+    elif Clan_Raids_Input == "6":
         quit()
     else:
         print("\nInvalid Input. Try Again.\n")
