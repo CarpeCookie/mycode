@@ -1,116 +1,44 @@
-#All of these imports used, if the code is broken down into several sections like it is on the wiki,
-#might not make sense to include all of them at the beginning, but will save time for new devs
+#!/usr/bin/enb python3
 
-import requests, zipfile, os, pickle, json, sqlite3
+import requests
+import json
 
-def get_manifest():
-    manifest_url = 'http://www.bungie.net/Platform/Destiny/Manifest/'
 
-    #get the manifest location from the json
-    r = requests.get(manifest_url)
-    manifest = r.json()
-    mani_url = 'http://www.bungie.net' + manifest['Response']['mobileWorldContentPaths']['en']
 
-    #Download the file, write it to 'MANZIP'
-    r = requests.get(mani_url)
-    with open("MANZIP", "wb") as zip:
-        zip.write(r.content)
-    print("Download Complete!")
+username = "CarpeCookie"
+membershiptype = "2"
 
-    #Extract the file contents, and rename the extracted file
-    # to 'Manifest.content'
-    with zipfile.ZipFile('MANZIP') as zip:
-        name = zip.namelist()
-        zip.extractall()
-    os.rename(name[0], 'Manifest.content')
-    print('Unzipped!')
+HEADERS = {"X-API-Key":'c6b881de35a143f98cda3d1e5dbf27b4'}
+searchdestinyprofile = requests.get("https://www.bungie.net/Platform/Destiny2/SearchDestinyPlayer/2/CarpeCookie", headers=HEADERS)
+# we do this request to pull user profile information.  This is the first request and doesn't require backend information, just the username and console.
 
-hashes = {
-    'DestinyActivityDefinition': 'activityHash',
-    'DestinyActivityTypeDefinition': 'activityTypeHash',
-    'DestinyClassDefinition': 'classHash',
-    'DestinyGenderDefinition': 'genderHash',
-    'DestinyInventoryBucketDefinition': 'bucketHash',
-    'DestinyInventoryItemDefinition': 'itemHash',
-    'DestinyProgressionDefinition': 'progressionHash',
-    'DestinyRaceDefinition': 'raceHash',
-    'DestinyTalentGridDefinition': 'gridHash',
-    'DestinyUnlockFlagDefinition': 'flagHash',
-    'DestinyHistoricalStatsDefinition': 'statId',
-    'DestinyDirectorBookDefinition': 'bookHash',
-    'DestinyStatDefinition': 'statHash',
-    'DestinySandboxPerkDefinition': 'perkHash',
-    'DestinyDestinationDefinition': 'destinationHash',
-    'DestinyPlaceDefinition': 'placeHash',
-    'DestinyActivityBundleDefinition': 'bundleHash',
-    'DestinyStatGroupDefinition': 'statGroupHash',
-    'DestinySpecialEventDefinition': 'eventHash',
-    'DestinyFactionDefinition': 'factionHash',
-    'DestinyVendorCategoryDefinition': 'categoryHash',
-    'DestinyEnemyRaceDefinition': 'raceHash',
-    'DestinyScriptedSkullDefinition': 'skullHash',
-    'DestinyGrimoireCardDefinition': 'cardId'
-}
+destinyprofile = searchdestinyprofile.json()    
+#the dictiontary its placed into
 
-hashes_trunc = {
-    'DestinyInventoryItemDefinition': 'itemHash',
-    'DestinyTalentGridDefinition': 'gridHash',
-    'DestinyHistoricalStatsDefinition': 'statId',
-    'DestinyStatDefinition': 'statHash',
-    'DestinySandboxPerkDefinition': 'perkHash',
-    'DestinyStatGroupDefinition': 'statGroupHash'
-}
+destinyprofile_response = destinyprofile['Response']
+destinyprofile_data = destinyprofile_response[0]
+membershipId = destinyprofile_data['membershipId']
+#breaking down the dictionary since I don't know how to search the subsections with a string.  I'll likely be using the membershipId often, so I just assigned it its own name.  I won't have to keep using a command to pull it from the list.  Also, the name of the value will be the same as the API I'm pulling from, making it easier to understand.
+print(membershipId)
 
-def build_dict(hash_dict):
-    #connect to the manifest
-    con = sqlite3.connect('manifest.content')
-    print('Connected')
-    #create a cursor object
-    cur = con.cursor()
+getprofile = requests.get("https://www.bungie.net/Platform/Destiny2/2/Profile/4611686018465168592/?components=200", headers=HEADERS)
+getprofile = getprofile.json()
+getprofile_response = getprofile['Response']
+getprofile_characters = getprofile_response['characters']
+getprofile_data = getprofile_characters['data']
+getprofile_data_keys = list(getprofile_data.keys())
+warlockid = getprofile_data_keys[0]
+hunterid = getprofile_data_keys[1]
+titanid = getprofile_data_keys[2]
 
-    all_data = {}
-    #for every table name in the dictionary
-    for table_name in hash_dict.keys():
-        #get a list of all the jsons from the table
-        cur.execute('SELECT json from ' + table_name)
-        print('Generating ' + table_name + ' dictionary....')
 
-        #this returns a list of tuples: the first item in each tuple is our json
-        items = cur.fetchall()
 
-        #create a list of jsons
-        item_jsons = [json.loads(item[0]) for item in items]
 
-        #create a dictionary with the hashes as keys
-        #and the jsons as values
-        item_dict = {}
-        hash = hash_dict[table_name]
-        for item in item_jsons:
-            item_dict[item[hash]] = item
+def Destiny_Manifest():
+    manifest = requests.get("https://www.bungie.net/Platform/Destiny2/Manifest", headers=HEADERS)
+    manifest = manifest.json()
+    manifest = manifest['Response']['mobileGearAssetDataBases']
+    print(manifest)
 
-        #add that dictionary to our all_data using the name of the table
-        #as a key.
-        all_data[table_name] = item_dict
 
-    print('Dictionary Generated!')
-    return all_data
-#check if pickle exists, if not create one.
-if os.path.isfile(r'path\to\file\manifest.content') == False:
-    get_manifest()
-    all_data = build_dict(hashes)
-    with open('manifest.pickle', 'wb') as data:
-        pickle.dump(all_data, data)
-        print("'manifest.pickle' created!\nDONE!")
-else:
-    print('Pickle Exists')
-
-with open('manifest.pickle', 'rb') as data:
-    all_data = pickle.load(data)
-
-hash = 1274330687
-ghorn = all_data['DestinyInventoryItemDefinition'][hash]
-
-print('Name: '+ghorn['itemName'])
-print('Type: '+ghorn['itemTypeName'])
-print('Tier: '+ghorn['tierTypeName'])
-print(ghorn['itemDescription'])
+Destiny_Manifest()
