@@ -16,7 +16,6 @@ destinyprofile_response = destinyprofile['Response']
 destinyprofile_data = destinyprofile_response[0]
 membershipId = destinyprofile_data['membershipId']
 #breaking down the dictionary since I don't know how to search the subsections with a string.  I'll likely be using the membershipId often, so I just assigned it its own name.  I won't have to keep using a command to pull it from the list.  Also, the name of the value will be the same as the API I'm pulling from, making it easier to understand.
-print(membershipId)
 
 getprofile = requests.get("https://www.bungie.net/Platform/Destiny2/2/Profile/4611686018465168592/?components=200", headers=HEADERS)
 getprofile = getprofile.json()
@@ -34,7 +33,7 @@ getclan = getclan.json()
 clanid = getclan['Response']['detail']['groupId']
 
 
-print("Welcome to Matt's Test App! Utilizing the the Bungie API, we can gather information on your character from Destiny 2!")
+print("\nWelcome to Matt's Test App! Utilizing the the Bungie API, we can gather information on your character from Destiny 2!")
 #The welcome line.  I don't want this to keep displaying so this will be outside of any functions.
 
 
@@ -59,7 +58,7 @@ def Main_Menu():
 
 
 def Equipment_Menu():
-    print("\nEquipped Gear:\n1: Print Gear\n2: Print Stats\n3. How's Your Look?\n4. Go Back\n5: Quit")
+    print("\nEquipped Gear:\n1: Print Gear\n2: Print Stats\n3: How's Your Look?\n4: Main Menu\n5: Quit")
     Equipped_Gear = input()
     if Equipped_Gear == "1":
         Print_Gear()
@@ -277,7 +276,7 @@ def Crucible_Menu():
     elif Crucible_Menu_Input == "3":
         Titan_Crucible_History()
     elif Crucible_Menu_Input == "4":
-        main()
+        Main_Menu()
     elif Crucible_Menu_Input == "5":
         quit()
     else:
@@ -797,7 +796,7 @@ def Strike_Menu():
     elif Strike_Menu_Input == "3":
         Titan_Strike_History()
     elif Strike_Menu_Input == "4":
-        main()
+        Main_Menu()
     elif Strike_Menu_Input == "5":
         quit()
     else:
