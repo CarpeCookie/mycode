@@ -75,26 +75,175 @@ def Crucible_Menu():
         Crucible_Menu()
 
 def Warlock_Crucible_History():    
-    print("Crucible Menu: \n1. Match One\n2. Match Two\n3. Match 3\n4. Match 4\n5. Match 5\n6. Main Menu\n7. Quit")
+    print("Crucible Menu: \n1. Match One\n2. Match Two\n3. Match Three\n4. Match Four\n5. Match Five\n6. Crucible Menu\n7. Main Menu\n8. Quit")
     Crucible_History_Menu = input()
     if Crucible_History_Menu == "1":
-        warlock_history = requests.get("https://www.bungie.net/Platform/Destiny2/" + membershiptype + "/Account/" + membershipId + "/Character/" + warlockid + "/Stats/Activities/?count=5&mode=5&page=0", headers=HEADERS)
-        warlock_history = warlock_history.json()
-        warlock_history_response = warlock_history['Response']
-        warlock_history_activities = warlock_history_response['activities']
-        warlock_match = warlock_history_activities[0]
-        warlock_match_stats = warlock_match['values']
-        
-        
-        print(warlock_match)
+        history = requests.get("https://www.bungie.net/Platform/Destiny2/" + membershiptype + "/Account/" + membershipId + "/Character/" + warlockid + "/Stats/Activities/?count=5&mode=5&page=0", headers=HEADERS)
+        history = history.json()
+        history_response = history['Response']
+        history_activities = history_response['activities']
+        match = history_activities[0]
+        match_stats = match['values']
+        assists = match_stats['assists']
+        assists = assists['basic']
+        assists = assists['value']
+        kills = match_stats['kills']
+        kills = kills['basic']
+        kills = kills['value']
+        deaths = match_stats['deaths']
+        deaths = deaths['basic']
+        deaths = deaths['value']
+        KDA =  match_stats['killsDeathsAssists']
+        KDA = KDA['basic']
+        KDA = KDA['value']
+        score = match_stats['score']
+        score = score['basic']
+        score = score['value']
+        print("\n \nScore: ", score)
+        print("Kills: ", kills)
+        print("Deaths: ", deaths)
+        print("Assists: ", assists)
+        print("KDA: :", KDA)
         print("\n \n")
+        Warlock_Crucible_History()
         
+    elif Crucible_History_Menu == "2":
+        history = requests.get("https://www.bungie.net/Platform/Destiny2/" + membershiptype + "/Account/" + membershipId + "/Character/" + warlockid + "/Stats/Activities/?count=5&mode=5&page=0", headers=HEADERS)
+        history = history.json()
+        history_response = history['Response']
+        history_activities = history_response['activities']
+        match = history_activities[1]
+        match_stats = match['values']
+        assists = match_stats['assists']
+        assists = assists['basic']
+        assists = assists['value']
+        kills = match_stats['kills']
+        kills = kills['basic']
+        kills = kills['value']
+        deaths = match_stats['deaths']
+        deaths = deaths['basic']
+        deaths = deaths['value']
+        KDA =  match_stats['killsDeathsAssists']
+        KDA = KDA['basic']
+        KDA = KDA['value']
+        score = match_stats['score']
+        score = score['basic']
+        score = score['value']
+        print("\n \nScore: ", score)
+        print("Kills: ", kills)
+        print("Deaths: ", deaths)
+        print("Assists: ", assists)
+        print("KDA: :", KDA)
+        print("\n \n")
+        Warlock_Crucible_History()
+        
+    elif Crucible_History_Menu == "3":
+        history = requests.get("https://www.bungie.net/Platform/Destiny2/" + membershiptype + "/Account/" + membershipId + "/Character/" + warlockid + "/Stats/Activities/?count=5&mode=5&page=0", headers=HEADERS)
+        history = history.json()
+        history_response = history['Response']
+        history_activities = history_response['activities']
+        match = history_activities[2]
+        match_stats = match['values']
+        assists = match_stats['assists']
+        assists = assists['basic']
+        assists = assists['value']
+        kills = match_stats['kills']
+        kills = kills['basic']
+        kills = kills['value']
+        deaths = match_stats['deaths']
+        deaths = deaths['basic']
+        deaths = deaths['value']
+        KDA =  match_stats['killsDeathsAssists']
+        KDA = KDA['basic']
+        KDA = KDA['value']
+        score = match_stats['score']
+        score = score['basic']
+        score = score['value']
+        print("\n \nScore: ", score)
+        print("Kills: ", kills)
+        print("Deaths: ", deaths)
+        print("Assists: ", assists)
+        print("KDA: :", KDA)
+        print("\n \n")
+        Warlock_Crucible_History()
 
-    
-    
-    
-    
-    
-    
-    
+    elif Crucible_History_Menu == "4":
+        history = requests.get("https://www.bungie.net/Platform/Destiny2/" + membershiptype + "/Account/" + membershipId + "/Character/" + warlockid + "/Stats/Activities/?count=5&mode=5&page=0", headers=HEADERS)
+        history = history.json()
+        history_response = history['Response']
+        history_activities = history_response['activities']
+        match = history_activities[3]
+        match_stats = match['values']
+        assists = match_stats['assists']
+        assists = assists['basic']
+        assists = assists['value']
+        kills = match_stats['kills']
+        kills = kills['basic']
+        kills = kills['value']
+        deaths = match_stats['deaths']
+        deaths = deaths['basic']
+        deaths = deaths['value']
+        KDA =  match_stats['killsDeathsAssists']
+        KDA = KDA['basic']
+        KDA = KDA['value']
+        score = match_stats['score']
+        score = score['basic']
+        score = score['value']
+        print("\n \nScore: ", score)
+        print("Kills: ", kills)
+        print("Deaths: ", deaths)
+        print("Assists: ", assists)
+        print("KDA: :", KDA)
+        print("\n \n")
+        Warlock_Crucible_History() 
+
+    elif Crucible_History_Menu == "5":
+        history = requests.get("https://www.bungie.net/Platform/Destiny2/" + membershiptype + "/Account/" + membershipId + "/Character/" + warlockid + "/Stats/Activities/?count=5&mode=5&page=0", headers=HEADERS)
+        history = history.json()
+        history_response = history['Response']
+        history_activities = history_response['activities']
+        match = history_activities[4]
+        match_stats = match['values']
+        assists = match_stats['assists']
+        assists = assists['basic']
+        assists = assists['value']
+        kills = match_stats['kills']
+        kills = kills['basic']
+        kills = kills['value']
+        deaths = match_stats['deaths']
+        deaths = deaths['basic']
+        deaths = deaths['value']
+        KDA =  match_stats['killsDeathsAssists']
+        KDA = KDA['basic']
+        KDA = KDA['value']
+        score = match_stats['score']
+        score = score['basic']
+        score = score['value']
+        print("\n \nScore: ", score)
+        print("Kills: ", kills)
+        print("Deaths: ", deaths)
+        print("Assists: ", assists)
+        print("KDA: :", KDA)
+        print("\n \n")
+        Warlock_Crucible_History()
+
+    elif Crucible_History_Menu == "6":    
+        Crucible_Menu()
+
+    elif Crucible_History_Menu == "7":
+        main()
+
+    elif Crucible_History_Menu == "8":
+        quit()
+
+    else:
+        print("Invalid Input. Try Again.")
+        Warlock_Crucible_History()
+
+
+
+
+
+
+
 main()
