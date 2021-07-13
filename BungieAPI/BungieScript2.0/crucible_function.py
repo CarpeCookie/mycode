@@ -6,8 +6,13 @@ import json
 HEADERS = {"X-API-Key":'c6b881de35a143f98cda3d1e5dbf27b4'}
 
 
-username = input("Username:\n")
-membershiptype = input("Input platform type.  1 = Xbox, 2 = Playstation, 3 = Steam, 5 = Stadia\n")
+#username = input("Username:\n")
+#membershiptype = input("Input platform type.  1 = Xbox, 2 = Playstation, 3 = Steam, 5 = Stadia\n")
+
+
+username = "CarpeCookie"
+membershiptype = "2"
+
 
 searchdestinyprofile = requests.get("https://www.bungie.net/Platform/Destiny2/SearchDestinyPlayer/2/CarpeCookie", headers=HEADERS)
 # we do this request to pull user profile information.  This is the first request and doesn't require backend information, just the username and console.
@@ -77,9 +82,11 @@ def Warlock_Crucible_History():
         warlock_history = warlock_history.json()
         warlock_history_response = warlock_history['Response']
         warlock_history_activities = warlock_history_response['activities']
-        warlock_history_match = warlock_history_activities['0']
-        warlock_history_stats = warlock_history_match['values']
-        print(warlock_history_stats)
+        warlock_match = warlock_history_activities[0]
+        warlock_match_stats = warlock_match['values']
+        
+        
+        print(warlock_match)
         print("\n \n")
         
 
