@@ -8,13 +8,14 @@ searchdestinyprofile = requests.get("https://www.bungie.net/Platform/Destiny2/Se
 # we do this request to pull user profile information.  This is the first request and doesn't require backend information, just the username and console.
 
 destinyprofile = searchdestinyprofile.json()    
+
 #the dictiontary its placed into
+membershiptype = "2"
 
 destinyprofile_response = destinyprofile['Response']
 destinyprofile_data = destinyprofile_response[0]
 membershipId = destinyprofile_data['membershipId']
 #breaking down the dictionary since I don't know how to search the subsections with a string.  I'll likely be using the membershipId often, so I just assigned it its own name.  I won't have to keep using a command to pull it from the list.  Also, the name of the value will be the same as the API I'm pulling from, making it easier to understand.
-print(membershipId)
 
 getprofile = requests.get("https://www.bungie.net/Platform/Destiny2/2/Profile/4611686018465168592/?components=200", headers=HEADERS)
 getprofile = getprofile.json()
@@ -32,29 +33,28 @@ getclan = getclan.json()
 clanid = getclan['Response']['detail']['groupId']
 
 
-print("Welcome to Matt's Test App! Utilizing the the Bungie API, we can gather information on your character from Destiny 2!")
+print("\nWelcome to Matt's Test App! Utilizing the the Bungie API, we can gather information on your character from Destiny 2!")
 #The welcome line.  I don't want this to keep displaying so this will be outside of any functions.
 
 
 def Main_Menu():
-    print("\nMain Menu: \n1: Equipped Gear\n2: Lore\n3: Match History (Crucible)\n4: Match History (Strikes)\n5: Clan info\n6: Exit Script")
+    print("\nMain Menu: \n1: Equipped Gear\n2: Match History (Crucible)\n3: Match History (Strikes)\n4: Clan info\n5: Exit Script")
     Main_Menu_Input = input()
     if Main_Menu_Input == "1":
         Equipment_Menu()
     elif Main_Menu_Input == "2":
-        Lore_Menu()
-    elif Main_Menu_Input == "3":
         Crucible_Menu()
-    elif Main_Menu_Input == "4":
+    elif Main_Menu_Input == "3":
         Strike_Menu()
-    elif Main_Menu_Input == "5":
+    elif Main_Menu_Input == "4":
         Clan_Menu()
-    elif Main_Menu_Input == "6":
+    elif Main_Menu_Input == "5":
         quit()
     else:
         print("\n \nInvalid Input. Try Again.\n \n")
         Main_Menu()
 
+#The Main Menu. Its actually an extremely simple function despite being the main function.  It just calls on other functions so I can keep things organized and loop around my script without closing out of it.
 
 def Clan_Menu():
     print("\nClan Menu:\n1: Crucible Leaderboards\n2: Strike Leaderboards\n3: Raid Leaderboards\n4: Main Menu\n5: Quit\n")
@@ -82,29 +82,29 @@ def Clan_Crucible():
     if Clan_Crucible_Input == "1":
         kills = leaderboard['lbKills']['entries']
         print("\nKILLS:")
-        print("1: ", kills[0]['player']['destinyUserInfo']['displayName'])
-        print("2: ", kills[1]['player']['destinyUserInfo']['displayName'])
-        print("3: ", kills[2]['player']['destinyUserInfo']['displayName'])
-        print("4: ", kills[3]['player']['destinyUserInfo']['displayName'])
-        print("5: ", kills[4]['player']['destinyUserInfo']['displayName'], "\n")
+        print("1: ", kills[0]['player']['destinyUserInfo']['displayName'], kills[0]['value']['basic']['value'])
+        print("2: ", kills[1]['player']['destinyUserInfo']['displayName'], kills[1]['value']['basic']['value'])
+        print("3: ", kills[2]['player']['destinyUserInfo']['displayName'], kills[2]['value']['basic']['value'])
+        print("4: ", kills[3]['player']['destinyUserInfo']['displayName'], kills[3]['value']['basic']['value'])
+        print("5: ", kills[4]['player']['destinyUserInfo']['displayName'], kills[4]['value']['basic']['value'], "\n")
         Clan_Crucible()
     elif Clan_Crucible_Input == "2":
         deaths = leaderboard['lbDeaths']['entries']
         print("\nDEATHS:")
-        print("1: ", deaths[0]['player']['destinyUserInfo']['displayName'])
-        print("2: ", deaths[1]['player']['destinyUserInfo']['displayName'])
-        print("3: ", deaths[2]['player']['destinyUserInfo']['displayName'])
-        print("4: ", deaths[3]['player']['destinyUserInfo']['displayName'])
-        print("5: ", deaths[4]['player']['destinyUserInfo']['displayName'], "\n")
+        print("1: ", deaths[0]['player']['destinyUserInfo']['displayName'], deaths[0]['value']['basic']['value'])
+        print("2: ", deaths[1]['player']['destinyUserInfo']['displayName'], deaths[1]['value']['basic']['value'])
+        print("3: ", deaths[2]['player']['destinyUserInfo']['displayName'], deaths[2]['value']['basic']['value'])
+        print("4: ", deaths[3]['player']['destinyUserInfo']['displayName'], deaths[3]['value']['basic']['value'])
+        print("5: ", deaths[4]['player']['destinyUserInfo']['displayName'], deaths[4]['value']['basic']['value'], "\n")
         Clan_Crucible()
     elif Clan_Crucible_Input == "3":
         assists = leaderboard['lbAssists']['entries']
         print("\nASSISTS:")
-        print("1: ", assists[0]['player']['destinyUserInfo']['displayName'])
-        print("2: ", assists[1]['player']['destinyUserInfo']['displayName'])
-        print("3: ", assists[2]['player']['destinyUserInfo']['displayName'])
-        print("4: ", assists[3]['player']['destinyUserInfo']['displayName'])
-        print("5: ", assists[4]['player']['destinyUserInfo']['displayName'], "\n")
+        print("1: ", assists[0]['player']['destinyUserInfo']['displayName'], assists[0]['value']['basic']['value'])
+        print("2: ", assists[1]['player']['destinyUserInfo']['displayName'], assists[1]['value']['basic']['value'])
+        print("3: ", assists[2]['player']['destinyUserInfo']['displayName'], assists[2]['value']['basic']['value'])
+        print("4: ", assists[3]['player']['destinyUserInfo']['displayName'], assists[3]['value']['basic']['value'])
+        print("5: ", assists[4]['player']['destinyUserInfo']['displayName'], assists[4]['value']['basic']['value'], "\n")
         Clan_Crucible()
     elif Clan_Crucible_Input == "4":
         Clan_Menu()
@@ -118,7 +118,7 @@ def Clan_Crucible():
 
 
 def Clan_Strikes():
-    print("\nRaid Leaderboards:\n1: Kills\n2: Deaths\n3: Assists\n4: Clan Menu\n5: Main Menu\n6: Quit\n")
+    print("\nStrike Leaderboards:\n1: Kills\n2: Deaths\n3: Assists\n4: Clan Menu\n5: Main Menu\n6: Quit\n")
     Clan_Strikes_Input = input()
     leaderboard = requests.get("https://www.bungie.net/Platform/Destiny2/Stats/Leaderboards/Clans/4228101/?maxtop=5&modes=3", headers=HEADERS)
     leaderboard = leaderboard.json()
@@ -126,29 +126,29 @@ def Clan_Strikes():
     if Clan_Strikes_Input == "1":
         kills = leaderboard['lbKills']['entries']
         print("\nKILLS:")
-        print("1: ", kills[0]['player']['destinyUserInfo']['displayName'])
-        print("2: ", kills[1]['player']['destinyUserInfo']['displayName'])
-        print("3: ", kills[2]['player']['destinyUserInfo']['displayName'])
-        print("4: ", kills[3]['player']['destinyUserInfo']['displayName'])
-        print("5: ", kills[4]['player']['destinyUserInfo']['displayName'], "\n")
+        print("1: ", kills[0]['player']['destinyUserInfo']['displayName'], kills[0]['value']['basic']['value'])
+        print("2: ", kills[1]['player']['destinyUserInfo']['displayName'], kills[1]['value']['basic']['value'])
+        print("3: ", kills[2]['player']['destinyUserInfo']['displayName'], kills[2]['value']['basic']['value'])
+        print("4: ", kills[3]['player']['destinyUserInfo']['displayName'], kills[3]['value']['basic']['value'])
+        print("5: ", kills[4]['player']['destinyUserInfo']['displayName'], kills[4]['value']['basic']['value'], "\n")
         Clan_Strikes()
     elif Clan_Strikes_Input == "2":
         deaths = leaderboard['lbDeaths']['entries']
         print("\nDEATHS:")
-        print("1: ", deaths[0]['player']['destinyUserInfo']['displayName'])
-        print("2: ", deaths[1]['player']['destinyUserInfo']['displayName'])
-        print("3: ", deaths[2]['player']['destinyUserInfo']['displayName'])
-        print("4: ", deaths[3]['player']['destinyUserInfo']['displayName'])
-        print("5: ", deaths[4]['player']['destinyUserInfo']['displayName'], "\n")
+        print("1: ", deaths[0]['player']['destinyUserInfo']['displayName'], deaths[0]['value']['basic']['value'])
+        print("2: ", deaths[1]['player']['destinyUserInfo']['displayName'], deaths[1]['value']['basic']['value'])
+        print("3: ", deaths[2]['player']['destinyUserInfo']['displayName'], deaths[2]['value']['basic']['value'])
+        print("4: ", deaths[3]['player']['destinyUserInfo']['displayName'], deaths[3]['value']['basic']['value'])
+        print("5: ", deaths[4]['player']['destinyUserInfo']['displayName'], deaths[4]['value']['basic']['value'], "\n")
         Clan_Strikes()
     elif Clan_Strikes_Input == "3":
         assists = leaderboard['lbAssists']['entries']
         print("\nASSISTS:")
-        print("1: ", assists[0]['player']['destinyUserInfo']['displayName'])
-        print("2: ", assists[1]['player']['destinyUserInfo']['displayName'])
-        print("3: ", assists[2]['player']['destinyUserInfo']['displayName'])
-        print("4: ", assists[3]['player']['destinyUserInfo']['displayName'])
-        print("5: ", assists[4]['player']['destinyUserInfo']['displayName'], "\n")
+        print("1: ", assists[0]['player']['destinyUserInfo']['displayName'], assists[0]['value']['basic']['value'])
+        print("2: ", assists[1]['player']['destinyUserInfo']['displayName'], assists[1]['value']['basic']['value'])
+        print("3: ", assists[2]['player']['destinyUserInfo']['displayName'], assists[2]['value']['basic']['value'])
+        print("4: ", assists[3]['player']['destinyUserInfo']['displayName'], assists[3]['value']['basic']['value'])
+        print("5: ", assists[4]['player']['destinyUserInfo']['displayName'], assists[4]['value']['basic']['value'], "\n")
         Clan_Strikes()
     elif Clan_Strikes_Input == "4":
         Clan_Menu()
@@ -170,29 +170,29 @@ def Clan_Raids():
     if Clan_Raids_Input == "1":
         kills = leaderboard['lbKills']['entries']
         print("\nKILLS:")
-        print("1: ", kills[0]['player']['destinyUserInfo']['displayName'])
-        print("2: ", kills[1]['player']['destinyUserInfo']['displayName'])
-        print("3: ", kills[2]['player']['destinyUserInfo']['displayName'])
-        print("4: ", kills[3]['player']['destinyUserInfo']['displayName'])
-        print("5: ", kills[4]['player']['destinyUserInfo']['displayName'], "\n")
+        print("1: ", kills[0]['player']['destinyUserInfo']['displayName'], kills[0]['value']['basic']['value'])
+        print("2: ", kills[1]['player']['destinyUserInfo']['displayName'], kills[1]['value']['basic']['value'])
+        print("3: ", kills[2]['player']['destinyUserInfo']['displayName'], kills[2]['value']['basic']['value'])
+        print("4: ", kills[3]['player']['destinyUserInfo']['displayName'], kills[3]['value']['basic']['value'])
+        print("5: ", kills[4]['player']['destinyUserInfo']['displayName'], kills[4]['value']['basic']['value'], "\n")
         Clan_Raids()
     elif Clan_Raids_Input == "2":
         deaths = leaderboard['lbDeaths']['entries']
         print("\nDEATHS:")
-        print("1: ", deaths[0]['player']['destinyUserInfo']['displayName'])
-        print("2: ", deaths[1]['player']['destinyUserInfo']['displayName'])
-        print("3: ", deaths[2]['player']['destinyUserInfo']['displayName'])
-        print("4: ", deaths[3]['player']['destinyUserInfo']['displayName'])
-        print("5: ", deaths[4]['player']['destinyUserInfo']['displayName'], "\n")
+        print("1: ", deaths[0]['player']['destinyUserInfo']['displayName'], deaths[0]['value']['basic']['value'])
+        print("2: ", deaths[1]['player']['destinyUserInfo']['displayName'], deaths[1]['value']['basic']['value'])
+        print("3: ", deaths[2]['player']['destinyUserInfo']['displayName'], deaths[2]['value']['basic']['value'])
+        print("4: ", deaths[3]['player']['destinyUserInfo']['displayName'], deaths[3]['value']['basic']['value'])
+        print("5: ", deaths[4]['player']['destinyUserInfo']['displayName'], deaths[4]['value']['basic']['value'], "\n")
         Clan_Raids()
     elif Clan_Raids_Input == "3":
         assists = leaderboard['lbAssists']['entries']
         print("\nASSISTS:")
-        print("1: ", assists[0]['player']['destinyUserInfo']['displayName'])
-        print("2: ", assists[1]['player']['destinyUserInfo']['displayName'])
-        print("3: ", assists[2]['player']['destinyUserInfo']['displayName'])
-        print("4: ", assists[3]['player']['destinyUserInfo']['displayName'])
-        print("5: ", assists[4]['player']['destinyUserInfo']['displayName'], "\n")
+        print("1: ", assists[0]['player']['destinyUserInfo']['displayName'], assists[0]['value']['basic']['value'])
+        print("2: ", assists[1]['player']['destinyUserInfo']['displayName'], assists[1]['value']['basic']['value'])
+        print("3: ", assists[2]['player']['destinyUserInfo']['displayName'], assists[2]['value']['basic']['value'])
+        print("4: ", assists[3]['player']['destinyUserInfo']['displayName'], assists[3]['value']['basic']['value'])
+        print("5: ", assists[4]['player']['destinyUserInfo']['displayName'], assists[4]['value']['basic']['value'], "\n")
         Clan_Raids()
     elif Clan_Raids_Input == "4":
         Clan_Menu()
@@ -203,7 +203,5 @@ def Clan_Raids():
     else:
         print("\nInvalid Input. Try Again.\n")
         Clan_Raids()
-
-
 
 Main_Menu()
